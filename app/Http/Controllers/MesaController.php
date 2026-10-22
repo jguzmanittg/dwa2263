@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Aula;
 use App\Models\Mesa;
 use Illuminate\Http\Request;
 
@@ -21,7 +22,8 @@ class MesaController extends Controller
      */
     public function create()
     {
-        return view('mesa.agregar');
+        $aulas = Aula::all();
+        return view('mesa.agregar',compact('aulas'));
     }
 
     /**
@@ -35,6 +37,7 @@ class MesaController extends Controller
         $nueva = new Mesa();
         $nueva->inventario = $request->input('inventario') ;
         $nueva->inventario = $datos['inventario'] ;
+        $nueva->aula_id = $datos['aula_id'] ;
         $nueva->save();
         return redirect(route('mesas.index'));
     }

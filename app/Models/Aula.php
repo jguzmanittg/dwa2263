@@ -7,5 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Aula extends Model
 {
+    public function mesa(){
+        return $this->hasOne(Mesa::class);
+    }
+
     use HasFactory;
 }

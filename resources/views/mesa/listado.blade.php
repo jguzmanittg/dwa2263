@@ -1,11 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
- <meta charset="UTF-8">
- <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <title>Document</title>
-</head>
-<body>
+@extends('sistema.plantilla')
+@section('main')
  <table border="1">
   <thead>
    <th>Numero de Inventario</th>
@@ -34,6 +28,4 @@
   </tbody>
  </table>
  <a href="{{route('mesas.create')}}">AGREGAR</a>
-
-</body>
-</html>
+@endsection

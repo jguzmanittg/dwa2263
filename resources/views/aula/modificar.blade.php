@@ -1,11 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
- <meta charset="UTF-8">
- <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <title>Document</title>
-</head>
-<body>
+@extends('sistema.plantilla')
+@section('main')
 FOMULARIO PARA modificar
 <form action="/actualiza/{{$aula->id}}" method="post"  enctype="">
  <label for='nombre'>nombre</label>
@@ -22,5 +16,4 @@ FOMULARIO PARA modificar
 @csrf
 @method('put')
 </form>
-</body>
-</html>
+@endsection

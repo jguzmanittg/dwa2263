@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('otra');
+    return view('sistema.plantilla');
 });
 
 //Route::get('/decir/',[Aula::class,'saludar']);

@@ -10,8 +10,11 @@
    @forelse($mesas as $mesa)
    <tr>
     <td>
-     <a href="{{route('mesas.show',$mesa->id)}}">{{$mesa->inventario}}</a></td>
+     <a href="{{route('mesas.show',$mesa->id)}}">{{$mesa->inventario}}</a>
+    </td>
     <td>
+
+    {{$mesa->aula->nombre}}
     </td>
     <td>
       <a href="{{route('mesas.edit',$mesa->id)}}">EDITAR</a> -

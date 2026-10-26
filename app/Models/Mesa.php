@@ -12,7 +12,7 @@ class Mesa extends Model
     public function aula() 
     {
         return $this->belongsTo(Aula::class);
-        //return $this->hasOne();
+        
     }
 
     use HasFactory;

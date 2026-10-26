@@ -13,8 +13,6 @@ class AulaController extends Controller
     public function index()
     {
         $aulas = Aula::all();
-
-
         return view('aula.listado', compact('aulas'));
         return "muestra todas las aulas";
     }

@@ -17,6 +17,5 @@ class MesasSeeder extends Seeder
         $nueva->inventario="123";
         $nueva->aula_id=1;
         $nueva->save();
-
         }
 }

@@ -18,5 +18,17 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+/*
+        $this->call(YSeeder::class);
+        $this->call(MesasSeeder::class);
+*/
+        $this->call(
+            [
+                YSeeder::class,
+                MesasSeeder::class,
+            ]
+        );
+
+
     }
 }

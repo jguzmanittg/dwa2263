@@ -15,6 +15,7 @@ return new class extends Migration
         Schema::create('mesas', function (Blueprint $table) {
             $table->id();
             $table->string("inventario");
+            $table->foreignIdFor(Aula::class,"aula_id");
             $table->timestamps();
         });
     }

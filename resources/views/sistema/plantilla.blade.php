@@ -19,7 +19,8 @@ nav li {
   <ul>
    <li><a href="listar">AULAS</a></li>
    <li><a href="{{route('mesas.index')}}">MESAS</a></li>
-   <li>USUARIO</li>
+   <li><a href="{{route('usuarios.index')}}">Usuarios</a></li>
+   <li>ACTUAL</li>
   </ul>
   </nav>
  </header>

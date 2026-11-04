@@ -3,6 +3,8 @@
 use App\Models\Aula;
 use App\Http\Controllers\AulaController;
 use App\Http\Controllers\MesaController;
+use App\Http\Controllers\PuertaController;
+use App\Http\Controllers\UsuarioController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,3 +34,7 @@ route::put('actualiza/{x}',[AulaController::class, 'update']);
 route::delete('borrar/{x}',[AulaController::class, 'destroy'])->name('aulas.borrar');
 
 Route::resource('mesas',MesaController::class);
+Route::resource('usuarios',UsuarioController::class);
+
+Route::get('login',[PuertaController::class, 'login' ])->name('login');
+Route::post('login',[PuertaController::class, 'Autenticar' ])->name('login2');

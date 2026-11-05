@@ -20,7 +20,14 @@ nav li {
    <li><a href="listar">AULAS</a></li>
    <li><a href="{{route('mesas.index')}}">MESAS</a></li>
    <li><a href="{{route('usuarios.index')}}">Usuarios</a></li>
-   <li>ACTUAL</li>
+   <li>
+   @guest
+    INVITADO 
+    @else
+      {{Auth::user()->nombre}}
+      - <a href="{{route('logout')}}">SALIR</a>
+   @endguest
+   </li>
   </ul>
   </nav>
  </header>

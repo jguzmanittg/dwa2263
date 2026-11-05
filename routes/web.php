@@ -19,7 +19,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('sistema.plantilla');
+    return view('sistema.login');
+//    return view('sistema.plantilla');
 });
 
 //Route::get('/decir/',[Aula::class,'saludar']);
@@ -33,8 +34,9 @@ Route::get('unoporuno/{x}',[AulaController::class, 'show']);
 route::put('actualiza/{x}',[AulaController::class, 'update']);
 route::delete('borrar/{x}',[AulaController::class, 'destroy'])->name('aulas.borrar');
 
-Route::resource('mesas',MesaController::class);
-Route::resource('usuarios',UsuarioController::class);
+Route::resource('mesas',MesaController::class)->middleware('auth');
+Route::resource('usuarios',UsuarioController::class)->middleware('auth');
 
 Route::get('login',[PuertaController::class, 'login' ])->name('login');
 Route::post('login',[PuertaController::class, 'Autenticar' ])->name('login2');
+Route::get('logout',[PuertaController::class, 'logout' ])->name('logout');

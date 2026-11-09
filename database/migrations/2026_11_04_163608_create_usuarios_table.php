@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string("control")->unique();
             $table->string('clave');
             $table->string('correo')->nullable();
+            $table->enum('tipo',['Admin','Almacen','Horarios'])->nullable();
             $table->timestamps();
         });
     }

@@ -19,7 +19,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('sistema.login');
+    return view('sistema.bienvenido');
+//    return view('sistema.login');
 //    return view('sistema.plantilla');
 });
 
@@ -38,5 +39,7 @@ Route::resource('mesas',MesaController::class)->middleware('auth');
 Route::resource('usuarios',UsuarioController::class)->middleware('auth');
 
 Route::get('login',[PuertaController::class, 'login' ])->name('login');
-Route::post('login',[PuertaController::class, 'Autenticar' ])->name('login2');
+Route::post('login',[PuertaController::class, 'autenticar' ])->name('login2');
 Route::get('logout',[PuertaController::class, 'logout' ])->name('logout');
+Route::get('registro',[PuertaController::class, 'registro' ])->name('registro');
+Route::post('registro',[PuertaController::class, 'agregar' ])->name('agregar');

@@ -1,6 +1,7 @@
 @extends('sistema.plantilla')
 @section('main')
- <table border="1">
+@can('viewAny', App\Models\Mesa::class)
+  <table border="1">
   <thead>
    <th>Numero de Inventario</th>
    <th>En que aula esta</th>
@@ -29,6 +30,12 @@
 
    @endforelse
   </tbody>
- </table>
- <a href="{{route('mesas.create')}}">AGREGAR</a>
+ </table> 
+@endcan
+
+@can('create', App\Models\Mesa::class)
+ <a href="{{route('mesas.create')}}">AGREGAR</a>  
+@endcan
+
+
 @endsection

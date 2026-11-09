@@ -26,6 +26,7 @@ class DatabaseSeeder extends Seeder
             [
                 YSeeder::class,
                 MesasSeeder::class,
+                UsuarioSeeder::class
             ]
         );
 

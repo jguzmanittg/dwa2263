@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Usuario;
+use Exception;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
@@ -17,10 +18,31 @@ class PuertaController extends Controller
         Auth::logout();
         return view('sistema.login');
     }
+    public function registro(){
+        return view('sistema.registro');
+    }
+    
     public function login(){
         return view('sistema.login');
     }
-    public function Autenticar(Request $request){
+    public function agregar(Request $request){
+        $nuevo = new Usuario();
+        $nuevo->nombre = $request->nombre;
+        $nuevo->clave = Hash::make($request->clave);
+        $nuevo->control = $request->control;
+
+        try{
+            $nuevo->save();
+        }catch(Exception $e){
+            return redirect()->back()->withInput()->with('mensaje','No pudimos agregar');
+        }
+        Auth::login($nuevo);
+        return view('sistema.plantilla');
+        
+
+
+    }
+    public function autenticar(Request $request){
         $encontrado = Usuario::query()->where('control',$request->input('control'))->first();
         if(is_null($encontrado))
         {

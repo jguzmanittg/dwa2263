@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\Usuario;
+use Carbon\Carbon;
 use Exception;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 use function PHPUnit\Framework\isNull;
 
@@ -51,7 +53,10 @@ class PuertaController extends Controller
         }else{
             if(Hash::check($request->input('clave'), $encontrado->clave )){
                 //return "bienvenido";
+                
+                Log::channel('bitacora')->warning("$encontrado->nombre entró en el sistema -  " . Carbon::now());
                 Auth::login($encontrado);
+
                 return view('sistema.plantilla');
             }else{
                 return redirect()->back()->withInput()->with('mensaje','REVISE LA CONTRASEÑA');

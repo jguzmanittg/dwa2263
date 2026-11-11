@@ -4,7 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\Aula;
 use App\Models\Mesa;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
+
 
 class MesaController extends Controller
 {
@@ -22,6 +27,7 @@ class MesaController extends Controller
      */
     public function create()
     {
+
         $aulas = Aula::all();
         return view('mesa.agregar',compact('aulas'));
     }
@@ -39,6 +45,8 @@ class MesaController extends Controller
         $nueva->inventario = $datos['inventario'] ;
         $nueva->aula_id = $datos['aula_id'] ;
         $nueva->save();
+        Log::channel('bitacora')->warning( Auth::user()->nombre . " agregó una mesa -  " . Carbon::now());
+
         return redirect(route('mesas.index'));
     }
 
@@ -75,7 +83,12 @@ class MesaController extends Controller
      */
     public function destroy(Mesa $mesa)
     {
-        $mesa->delete();
-        return redirect(route('mesas.index'));
+        if(Gate::allows('delete',$mesa)){
+            $mesa->delete();
+            return redirect(route('mesas.index'));
+        }else{
+            return "NO PUEDES";
+
+        }
     }
 }

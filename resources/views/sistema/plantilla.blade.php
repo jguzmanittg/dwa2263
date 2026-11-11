@@ -24,7 +24,7 @@ nav li {
    @guest
     INVITADO 
     @else
-      {{Auth::user()->nombre}}
+      {{Auth::user()->nombre }} - {{Auth::user()->tipo }}
       - <a href="{{route('logout')}}">SALIR</a>
    @endguest
    </li>

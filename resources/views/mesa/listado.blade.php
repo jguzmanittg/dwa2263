@@ -18,12 +18,16 @@
     {{$mesa->aula->nombre}}
     </td>
     <td>
-      <a href="{{route('mesas.edit',$mesa->id)}}">EDITAR</a> -
+      <a href="{{route('mesas.edit',$mesa->id)}}">EDITAR</a>
+      @can('delete', $mesa)
+       -
       <form action="{{route('mesas.destroy',$mesa->id)}}" method="post" style="display:inline">
       @csrf
       @method('delete')
       <input type="submit" value="BORRAR">
       </form>
+        
+      @endcan
     </td>
    </tr>
    @empty

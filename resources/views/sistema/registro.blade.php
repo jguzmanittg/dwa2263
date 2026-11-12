@@ -18,6 +18,8 @@
  <input type='text' name='control' id='control' value="{{old('control')}}"><br>
  <label for='clave'>clave</label>
  <input type='text' name='clave' id='clave' value="{{old('clave')}}"><br>
+ <label for='correo'>correo</label>
+ <input type='text' name='correo' id='correo'><br>
  <input type="submit" value="Registrar">
  @csrf
  </form>

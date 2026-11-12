@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\CorreoBienvenida;
 use App\Models\Usuario;
 use Carbon\Carbon;
 use Exception;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
+
 
 
 use Illuminate\Http\Request;
@@ -32,12 +35,16 @@ class PuertaController extends Controller
         $nuevo->nombre = $request->nombre;
         $nuevo->clave = Hash::make($request->clave);
         $nuevo->control = $request->control;
+        $nuevo->correo = $request->correo;
 
         try{
             $nuevo->save();
         }catch(Exception $e){
             return redirect()->back()->withInput()->with('mensaje','No pudimos agregar');
         }
+
+        Mail::to($nuevo->correo)->send(new CorreoBienvenida($nuevo));
+
         Auth::login($nuevo);
         return view('sistema.plantilla');
         

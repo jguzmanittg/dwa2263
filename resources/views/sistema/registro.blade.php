@@ -11,6 +11,18 @@
    <div>{!! \Session::get('mensaje') !!}</div>
   @endif
  </p>
+
+
+@if ($errors->any())
+    <div style="border: 1 solid red;">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+ 
  <form action="{{route('agregar')}}" method="post">
  <label for='nombre'>nombre</label>
  <input type='text' name='nombre' id='nombre' value="{{old('nombre')}}"><br>

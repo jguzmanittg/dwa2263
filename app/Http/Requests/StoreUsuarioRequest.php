@@ -22,7 +22,17 @@ class StoreUsuarioRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'nombre'=>'required|uppercase',
+            'control'=>'required',            
         ];
     }
+
+    public function messages(): array
+    {
+        return [
+            '*.required'=>':attribute Este campo es requerido',
+            'nombre.uppercase'=>'Debe estar en mayúsculas.',
+        ];
+    }
+
 }

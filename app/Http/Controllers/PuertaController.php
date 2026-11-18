@@ -9,9 +9,7 @@ use Exception;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
-
-
-
+use App\Http\Requests\StoreUsuarioRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
@@ -30,7 +28,7 @@ class PuertaController extends Controller
     public function login(){
         return view('sistema.login');
     }
-    public function agregar(Request $request){
+    public function agregar(StoreUsuarioRequest $request){
         $nuevo = new Usuario();
         $nuevo->nombre = $request->nombre;
         $nuevo->clave = Hash::make($request->clave);
